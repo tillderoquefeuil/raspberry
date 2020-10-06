@@ -5,9 +5,9 @@ How to Raspberry Pi 4 with ssh access on mac (without screen and keyboard)
 ## setup a new Raspberry Pi 4
 
 ### required
-- Download (SD Card Formatter)[https://www.sdcard.org/downloads/formatter/eula_mac/index.html]
-- Download the (Raspberry OS)[https://www.raspberrypi.org/downloads/raspberry-pi-os/] you need
-- Download (Etcher)[https://www.balena.io/etcher/]
+- Download [SD Card Formatter](https://www.sdcard.org/downloads/formatter/eula_mac/index.html)
+- Download the [Raspberry OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) you need
+- Download [Etcher](https://www.balena.io/etcher/)
 
 ### mount sd card
 - Open SD Card Formatter
