@@ -1,4 +1,4 @@
-# raspberry
+# RASPBERRY PI 4
 
 How to Raspberry Pi 4 with ssh access on mac (without screen and keyboard)
 - [source](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html)
