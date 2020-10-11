@@ -1,23 +1,23 @@
 # raspberry
 
 How to Raspberry Pi 4 with ssh access on mac (without screen and keyboard)
+[source](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html)
 
 ## setup a new Raspberry Pi 4
 
 ### required
-- Download [SD Card Formatter](https://www.sdcard.org/downloads/formatter/eula_mac/index.html)
-- Download the [Raspberry OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/) you need
-- Download [Etcher](https://www.balena.io/etcher/)
+- Download [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
+
 
 ### mount sd card
-- Open SD Card Formatter
-- Select the micro SD card, choose "Overwrite format", label the Volume "boot" and click "Format"
-- Eject the micro SD card and plug it again
+#### format
+- Open Disk Utility
+- Erase Sd card with Format *ExFAT* and Scheme *Master Boot Record*
+[source](https://kb-eu.sandisk.com/app/answers/detail/a_id/203/kw/format)
 
-### install Raspberry OS
-- Open balenaEtcher
-- Select the unzipped img of the Raspberry OS, the micro SD card and click "Flash"
-- Eject the micro SD card and plug it again
+#### raspberry pi os
+- Open Raspberry Pi Imager and flash the Raspberry Pi OS you want to your SD card
+- You can now eject your SD card and plug it into your raspberry
 
 ### allow SSH
 - Open the volume "boot" and create an empty file named "ssh"
@@ -33,9 +33,25 @@ How to Raspberry Pi 4 with ssh access on mac (without screen and keyboard)
 ### find the Raspberry Pi IP address
 #### with Nmap
 ```diff
-ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'
-# 192.168.0.20
-sudo nmap -sn 192.168.0.0/24
+# Get Ip Address
+ipconfig getifaddr en0
+# ***.***.*.20
+
+# List device on network
+sudo nmap -sn *.*.*.0/24
+# [...]
+# Nmap scan report for *.*.*.27
+# Host is up (0.0069s latency).
+# MAC Address: *:*:*:*:*:* (Raspberry Pi Trading)
+# [...]
+
+# Connect with SSH
+ssh pi@*.*.*.27
+# On first connection, you will see a security/authenticity warning. Type 'yes' to continue
+# Next you will be prompted for the password for the pi login: the default password on Raspberry Pi OS is 'raspberry'
 ```
 
-
+Sources :
+- [IP address](https://medium.com/@smartsplash/getting-ip-address-in-mac-b7e999149d89)
+- [List device with nmap](https://linux.die.net/man/1/nmap)
+- [SSH connection](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
