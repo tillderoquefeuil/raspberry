@@ -52,5 +52,7 @@ ssh pi@*.*.*.27
 ```
 
 [source 1: IP address](https://medium.com/@smartsplash/getting-ip-address-in-mac-b7e999149d89)
+
 [source 2: List device with nmap](https://linux.die.net/man/1/nmap)
+
 [source 3: SSH connection](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
