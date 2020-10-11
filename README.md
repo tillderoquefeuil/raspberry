@@ -1,7 +1,8 @@
 # RASPBERRY PI 4
 
 How to Raspberry Pi 4 with ssh access on mac (without screen and keyboard)
-- [source](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html)
+
+[source](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html)
 
 ## SET UP A NEW RASPBERRY PI 4
 
@@ -11,7 +12,8 @@ How to Raspberry Pi 4 with ssh access on mac (without screen and keyboard)
 ### format sd card
 - Open Disk Utility
 - Erase Sd card with Format *ExFAT* and Scheme *Master Boot Record*
-- [source](https://kb-eu.sandisk.com/app/answers/detail/a_id/203/kw/format)
+
+[source](https://kb-eu.sandisk.com/app/answers/detail/a_id/203/kw/format)
 
 ### raspberry pi os
 - Open Raspberry Pi Imager and flash the Raspberry Pi OS you want to your SD card
@@ -49,6 +51,6 @@ ssh pi@*.*.*.27
 # Next you will be prompted for the password for the pi login: the default password on Raspberry Pi OS is 'raspberry'
 ```
 
-- [source 1: IP address](https://medium.com/@smartsplash/getting-ip-address-in-mac-b7e999149d89)
-- [source 2: List device with nmap](https://linux.die.net/man/1/nmap)
-- [source 3: SSH connection](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
+[source 1: IP address](https://medium.com/@smartsplash/getting-ip-address-in-mac-b7e999149d89)
+[source 2: List device with nmap](https://linux.die.net/man/1/nmap)
+[source 3: SSH connection](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
