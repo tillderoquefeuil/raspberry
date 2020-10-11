@@ -1,21 +1,19 @@
 # raspberry
 
 How to Raspberry Pi 4 with ssh access on mac (without screen and keyboard)
-[source](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html)
+- [source](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html)
 
-## setup a new Raspberry Pi 4
+## SET A NEW RASPBERRY PI 4
 
 ### required
 - Download [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
 
-
-### mount sd card
-#### format
+### format sd card
 - Open Disk Utility
 - Erase Sd card with Format *ExFAT* and Scheme *Master Boot Record*
-[source](https://kb-eu.sandisk.com/app/answers/detail/a_id/203/kw/format)
+- [source](https://kb-eu.sandisk.com/app/answers/detail/a_id/203/kw/format)
 
-#### raspberry pi os
+### raspberry pi os
 - Open Raspberry Pi Imager and flash the Raspberry Pi OS you want to your SD card
 - You can now eject your SD card and plug it into your raspberry
 
@@ -23,15 +21,15 @@ How to Raspberry Pi 4 with ssh access on mac (without screen and keyboard)
 - Open the volume "boot" and create an empty file named "ssh"
 - Finaly eject the micro SD card
 
-## connection the Raspberry Pi 4
-
-### plug
+### start the raspberry
 - Insert the micro SD card in the Raspberry Pi
 - Connect it with an ethernet cable to the router
 - Connect the power cable and plug it in
 
-### find the Raspberry Pi IP address
-#### with Nmap
+
+## RASPBERRY TO WEB SERVER
+
+### connection to the SSH server
 ```diff
 # Get Ip Address
 ipconfig getifaddr en0
@@ -51,7 +49,6 @@ ssh pi@*.*.*.27
 # Next you will be prompted for the password for the pi login: the default password on Raspberry Pi OS is 'raspberry'
 ```
 
-Sources :
-- [IP address](https://medium.com/@smartsplash/getting-ip-address-in-mac-b7e999149d89)
-- [List device with nmap](https://linux.die.net/man/1/nmap)
-- [SSH connection](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
+- [source 1: IP address](https://medium.com/@smartsplash/getting-ip-address-in-mac-b7e999149d89)
+- [source 2: List device with nmap](https://linux.die.net/man/1/nmap)
+- [source 3: SSH connection](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
