@@ -51,9 +51,9 @@ ssh pi@*.*.*.27
 # Next you will be prompted for the password for the pi login: the default password on Raspberry Pi OS is 'raspberry'
 ```
 
-> [source 1: IP address](https://medium.com/@smartsplash/getting-ip-address-in-mac-b7e999149d89)
-> [source 2: List device with nmap](https://linux.die.net/man/1/nmap)
-> [source 3: SSH connection](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
+> [source 1: IP address](https://medium.com/@smartsplash/getting-ip-address-in-mac-b7e999149d89)\
+> [source 2: List device with nmap](https://linux.die.net/man/1/nmap)\
+> [source 3: SSH connection](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)\
 
 
 ### set up server
