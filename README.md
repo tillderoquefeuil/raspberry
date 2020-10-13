@@ -33,6 +33,8 @@ How to Raspberry Pi 4 with ssh access on mac (without screen and keyboard)
 
 ### connection to the SSH server
 ```diff
+# IN THE COMPUTER CONSOLE
+
 # Get Ip Address
 ipconfig getifaddr en0
 # ***.***.*.20
@@ -58,6 +60,8 @@ ssh pi@*.*.*.27
 
 ### set up server
 ```diff
+# IN THE RASPBERRY CONSOLE
+
 # change password
 sudo raspi-config
 
@@ -71,8 +75,55 @@ sudo apt-get install git
 
 ### install node
 ```diff
+# IN THE RASPBERRY CONSOLE
+
 # install node (v14)
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 > [source](https://github.com/nodesource/distributions#debinstall)
+
+
+### add user
+```diff
+# IN THE RASPBERRY CONSOLE
+
+sudo adduser USERNAME
+sudo su USERNAME
+mkdir ~/.ssh && chmod 700 ~/.ssh
+touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
+exit
+```
+> [source](https://dzone.com/articles/using-a-raspberry-pi-as-your-development-server)
+
+### create project folder
+```diff
+# IN THE RASPBERRY CONSOLE
+
+mkdir ~/www
+mkdir /home/USERNAME/FOLDERNAME.git
+cd FOLDERNAME.git && git init --bare
+```
+```diff
+# IN THE COMPUTER CONSOLE
+
+git clone USERNAME@RASPBERRY-IP:FOLDERNAME
+```
+> [source](https://dzone.com/articles/using-a-raspberry-pi-as-your-development-server)
+
+### Nginx
+```diff
+# IN THE RASPBERRY CONSOLE
+
+sudo apt install nginx
+sudo ufw allow 'Nginx HTTP'
+
+#backup
+sudo cp /etc/nginx/sites-available/default ~
+
+sudo nano /etc/nginx/sites-available/default
+# change    root /var/www/example.com;
+# to        root /home/pi/www;
+
+sudo systemctl reload nginx
+```
