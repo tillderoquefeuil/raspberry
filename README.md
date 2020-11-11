@@ -98,24 +98,33 @@ exit
 
 ### create project folder
 ```diff
-# IN THE RASPBERRY CONSOLE
+# IN THE RASPBERRY CONSOLE AS USERNAME
 
-mkdir ~/www
-mkdir /home/USERNAME/FOLDERNAME.git
+cd ~
+mkdir www
+# mkdir /home/git/the-kleeman-experience.git
+mkdir FOLDERNAME.git
+# cd the-kleeman-experience.git && git init --bare
 cd FOLDERNAME.git && git init --bare
 ```
 ```diff
 # IN THE COMPUTER CONSOLE
 
-git clone USERNAME@RASPBERRY-IP:FOLDERNAME
+# git clone git@192.168.0.27:the-kleeman-experience
+git clone USERNAME@RASPBERRY-IP:FOLDERNAME.git
 ```
 > [source](https://dzone.com/articles/using-a-raspberry-pi-as-your-development-server)
 
 ### Nginx
 ```diff
-# IN THE RASPBERRY CONSOLE
+# IN THE RASPBERRY CONSOLE AS ROOT
 
 sudo apt install nginx
+# list available profiles
+sudo ufw app list
+# if "ERROR: Couldn't determine iptables version"
+# sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+
 sudo ufw allow 'Nginx HTTP'
 
 #backup
@@ -123,7 +132,57 @@ sudo cp /etc/nginx/sites-available/default ~
 
 sudo nano /etc/nginx/sites-available/default
 # change    root /var/www/example.com;
-# to        root /home/pi/www;
+# to        root /home/USERNAME/www;
 
 sudo systemctl reload nginx
+```
+> [source 1: ufw error](https://raspberrypi.stackexchange.com/questions/100598/ufw-and-iptables-on-buster)
+> [source 2: Nginx configuration](https://dzone.com/articles/using-a-raspberry-pi-as-your-development-server)
+
+### publish from scratch
+```diff
+# IN THE COMPUTER CONSOLE
+
+npx create-react-app FOLDERNAME
+cd FOLDERNAME
+git init
+git add .
+git commit -m "First commit"
+
+# git remote add origin tde-roqu@192.168.0.27:the-kleeman-experience.git
+git remote add origin USERNAME@RASPBERRY-IP:FOLDERNAME.git
+
+git push --set-upstream origin master
+```
+```diff
+# IN THE RASPBERRY CONSOLE AS USERNAME
+cd ~ 
+git clone FOLDERNAME.git test
+cd test
+npm install react
+npm install react-scripts
+npm install
+npm run-script build
+```
+
+### git hooks
+```diff
+# IN THE RASPBERRY CONSOLE AS USERNAME
+mkdir ~/build
+cd ~/FOLDERNAME.git/hooks
+nano post-receive
+```
+Copy this into file
+```diff
+#!/bin/bash 
+
+unset GIT_INDEX_FILE
+echo "Publishing our React App"
+git --work-tree /home/USERNAME/build --git-dir=/home/USERNAME/FOLDERNAME.git checkout -f
+cd /home/USERNAME/build
+npm run-script build
+cp -r /home/USERNAME/build/build/* /home/USERNAME/www
+```
+```diff
+chmod +x FOLDERNAME.git/hooks/post-receive
 ```
